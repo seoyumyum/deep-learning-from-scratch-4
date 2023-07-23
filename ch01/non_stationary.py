@@ -10,7 +10,7 @@ class NonStatBandit:
 
     def play(self, arm):
         rate = self.rates[arm]
-        self.rates += 0.1 * np.random.randn(self.arms)  # Add noise
+        self.rates += 0.1 * np.random.randn(self.arms)  # 노이즈 추가
         if rate > np.random.rand():
             return 1
         else:
@@ -21,9 +21,10 @@ class AlphaAgent:
     def __init__(self, epsilon, alpha, actions=10):
         self.epsilon = epsilon
         self.Qs = np.zeros(actions)
-        self.alpha = alpha
+        self.alpha = alpha  # 고정값 α
 
     def update(self, action, reward):
+        # α로 갱신
         self.Qs[action] += (reward - self.Qs[action]) * self.alpha
 
     def get_action(self):
@@ -64,7 +65,7 @@ for agent_type in agent_types:
     avg_rates = np.average(all_rates, axis=0)
     results[agent_type] = avg_rates
 
-# plot
+# 그림 1-20
 plt.figure()
 plt.ylabel('Average Rates')
 plt.xlabel('Steps')
