@@ -6,9 +6,9 @@ from bandit import Bandit, Agent
 runs = 200
 steps = 1000
 epsilon = 0.1
-all_rates = np.zeros((runs, steps))  # (2000, 1000)
+all_rates = np.zeros((runs, steps))  # (200, 1000) 형상 배열
 
-for run in range(runs):
+for run in range(runs):  # 200번 실험
     bandit = Bandit()
     agent = Agent(epsilon)
     total_reward = 0
@@ -21,10 +21,11 @@ for run in range(runs):
         total_reward += reward
         rates.append(total_reward / (step + 1))
 
-    all_rates[run] = rates
+    all_rates[run] = rates  # 보상 결과 기록
 
-avg_rates = np.average(all_rates, axis=0)
+avg_rates = np.average(all_rates, axis=0)  # 각 단계의 평균 저장
 
+# 그래프 그리기
 plt.ylabel('Rates')
 plt.xlabel('Steps')
 plt.plot(avg_rates)
