@@ -4,23 +4,23 @@ import common.gridworld_render as render_helper
 
 class GridWorld:
     def __init__(self):
-        self.action_space = [0, 1, 2, 3]
-        self.action_meaning = {
+        self.action_space = [0, 1, 2, 3]  # 행동 공간(가능한 행동들)
+        self.action_meaning = {  # 행동의 의미
             0: "UP",
             1: "DOWN",
             2: "LEFT",
             3: "RIGHT",
         }
 
-        self.reward_map = np.array(
+        self.reward_map = np.array(  # 보상 맵(각 좌표의 보상 값)
             [[0, 0, 0, 1.0],
              [0, None, 0, -1.0],
              [0, 0, 0, 0]]
         )
-        self.goal_state = (0, 3)
-        self.wall_state = (1, 1)
-        self.start_state = (2, 0)
-        self.agent_state = self.start_state
+        self.goal_state = (0, 3)    # 목표 상태(좌표)
+        self.wall_state = (1, 1)    # 벽 상태(좌표)
+        self.start_state = (2, 0)   # 시작 상태(좌표)
+        self.agent_state = self.start_state   # 에이전트 초기 상태(좌표)
 
     @property
     def height(self):
@@ -43,17 +43,19 @@ class GridWorld:
                 yield (h, w)
 
     def next_state(self, state, action):
+        # 이동 위치 계산
         action_move_map = [(-1, 0), (1, 0), (0, -1), (0, 1)]
         move = action_move_map[action]
         next_state = (state[0] + move[0], state[1] + move[1])
         ny, nx = next_state
 
+        # 이동한 위치가 그리드 월드의 테두리 밖이나 벽인가?
         if nx < 0 or nx >= self.width or ny < 0 or ny >= self.height:
             next_state = state
         elif next_state == self.wall_state:
             next_state = state
 
-        return next_state
+        return next_state  # 다음 상태 반환
 
     def reward(self, state, action, next_state):
         return self.reward_map[next_state]
