@@ -53,13 +53,13 @@ if __name__ == '__main__':
 
     print(total_reward)
 
-    # 그래프 그리기(보상 총합)
+    # [그림 1-12] 단계에 따른 보상 총합
     plt.ylabel('Total reward')
     plt.xlabel('Steps')
     plt.plot(total_rewards)
     plt.show()
 
-    # 그래프 그리기(단계 수와 승률)
+    # [그림 1-13] 단계 수와 승률
     plt.ylabel('Rates')
     plt.xlabel('Steps')
     plt.plot(rates)
