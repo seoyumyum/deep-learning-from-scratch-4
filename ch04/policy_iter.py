@@ -40,19 +40,20 @@ def policy_iter(env, gamma, threshold=0.001, is_render=True):
     V = defaultdict(lambda: 0)
 
     while True:
-        V = policy_eval(pi, V, env, gamma, threshold)
-        new_pi = greedy_policy(V, env, gamma)
+        V = policy_eval(pi, V, env, gamma, threshold)  # 평가
+        new_pi = greedy_policy(V, env, gamma)          # 개선
 
         if is_render:
             env.render_v(V, pi)
 
-        if new_pi == pi:
+        if new_pi == pi:  # 갱신 여부 확인
             break
         pi = new_pi
 
     return pi
 
 
+# 가치 함수와 정책 시각화(책의 [그림 4-16]은 처음과 마지막 그래프만 표시했음)
 if __name__ == '__main__':
     env = GridWorld()
     gamma = 0.9
