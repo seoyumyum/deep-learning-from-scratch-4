@@ -18,13 +18,14 @@ def greedy_probs(Q, state, epsilon=0, action_size=4):
 class McAgent:
     def __init__(self):
         self.gamma = 0.9
-        self.epsilon = 0.1
-        self.alpha = 0.1
+        self.epsilon = 0.1  # (첫 번째 개선) ε-탐욕 정책의 ε
+        self.alpha = 0.1    # (두 번째 개선) Q 함수 갱신 시의 고정값 α
         self.action_size = 4
 
         random_actions = {0: 0.25, 1: 0.25, 2: 0.25, 3: 0.25}
         self.pi = defaultdict(lambda: random_actions)
         self.Q = defaultdict(lambda: 0)
+        # self.cnts = defaultdict(lambda: 0)
         self.memory = []
 
     def get_action(self, state):
@@ -46,6 +47,8 @@ class McAgent:
             state, action, reward = data
             G = self.gamma * G + reward
             key = (state, action)
+            # self.cnts[key] += 1
+            # self.Q[key] += (G - self.Q[key]) / self.cnts[key]
             self.Q[key] += (G - self.Q[key]) * self.alpha
             self.pi[state] = greedy_probs(self.Q, state, self.epsilon)
 
@@ -69,4 +72,5 @@ for episode in range(episodes):
 
         state = next_state
 
+# [그림 5-17] Q 함수 시각화
 env.render_q(agent.Q)
