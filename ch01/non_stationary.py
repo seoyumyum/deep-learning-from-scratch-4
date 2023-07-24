@@ -65,7 +65,7 @@ for agent_type in agent_types:
     avg_rates = np.average(all_rates, axis=0)
     results[agent_type] = avg_rates
 
-# 그림 1-20
+# [그림 1-20] 표본 평균과 고정값 α에 의한 갱신 비교
 plt.figure()
 plt.ylabel('Average Rates')
 plt.xlabel('Steps')
