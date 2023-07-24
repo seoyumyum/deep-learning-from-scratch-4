@@ -15,10 +15,10 @@ class SarsaAgent:
         random_actions = {0: 0.25, 1: 0.25, 2: 0.25, 3: 0.25}
         self.pi = defaultdict(lambda: random_actions)
         self.Q = defaultdict(lambda: 0)
-        self.memory = deque(maxlen=2)
+        self.memory = deque(maxlen=2)  # deque 사용
 
     def get_action(self, state):
-        action_probs = self.pi[state]
+        action_probs = self.pi[state]  # pi에서 선택
         actions = list(action_probs.keys())
         probs = list(action_probs.values())
         return np.random.choice(actions, p=probs)
@@ -33,10 +33,13 @@ class SarsaAgent:
 
         state, action, reward, done = self.memory[0]
         next_state, next_action, _, _ = self.memory[1]
-        next_q = 0 if done else self.Q[next_state, next_action]
+        next_q = 0 if done else self.Q[next_state, next_action]  # 다음 Q 함수
 
+        # TD법으로 self.Q 갱신
         target = reward + self.gamma * next_q
         self.Q[state, action] += (target - self.Q[state, action]) * self.alpha
+        
+        # 정책 개선
         self.pi[state] = greedy_probs(self.Q, state, self.epsilon)
 
 
@@ -52,11 +55,13 @@ for episode in range(episodes):
         action = agent.get_action(state)
         next_state, reward, done = env.step(action)
 
-        agent.update(state, action, reward, done)
+        agent.update(state, action, reward, done)  # 매번 호출
 
         if done:
+            # 목표에 도달했을 때도 호출
             agent.update(next_state, None, None, None)
             break
         state = next_state
 
+# [그림 6-7] SARSA로 얻은 결과
 env.render_q(agent.Q)
