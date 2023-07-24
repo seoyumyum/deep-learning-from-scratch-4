@@ -13,9 +13,9 @@ class QLearningAgent:
         self.Q = defaultdict(lambda: 0)
 
     def get_action(self, state):
-        if np.random.rand() < self.epsilon:
+        if np.random.rand() < self.epsilon:  # epsilon의 확률로 무작위 행동
             return np.random.choice(self.action_size)
-        else:
+        else:                                # (1 - epsilon)의 확률로 탐욕 행동
             qs = [self.Q[state, a] for a in range(self.action_size)]
             return np.argmax(qs)
 
