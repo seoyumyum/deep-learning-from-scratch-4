@@ -13,5 +13,5 @@ while True:
     cnt += 1
     if delta < 0.0001:
         print(V)
-        print(cnt)
+        print('갱신 횟수:', cnt)
         break
