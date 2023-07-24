@@ -30,7 +30,7 @@ class RandomAgent:
 
     def eval(self):
         G = 0
-        for data in reversed(self.memory):
+        for data in reversed(self.memory):  # 역방향으로(reserved) 따라가기
             state, action, reward = data
             G = self.gamma * G + reward
             self.cnts[state] += 1
@@ -41,19 +41,20 @@ env = GridWorld()
 agent = RandomAgent()
 
 episodes = 1000
-for episode in range(episodes):
+for episode in range(episodes):  # 에피소드 1000번 수행
     state = env.reset()
     agent.reset()
 
     while True:
-        action = agent.get_action(state)
-        next_state, reward, done = env.step(action)
+        action = agent.get_action(state)             # 행동 선택
+        next_state, reward, done = env.step(action)  # 행동 수행
 
-        agent.add(state, action, reward)
-        if done:
-            agent.eval()
-            break
+        agent.add(state, action, reward)  # (상태, 행동, 보상) 저장
+        if done:   # 목표에 도달 시
+            agent.eval()  # 몬테카를로법으로 가치 함수 갱신
+            break         # 다음 에피소드 시작
 
         state = next_state
 
+# [그림 5-12] 몬테카를로법으로 얻은 가치 함수
 env.render_v(agent.V)
