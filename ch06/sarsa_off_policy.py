@@ -21,7 +21,7 @@ class SarsaOffPolicyAgent:
         self.memory = deque(maxlen=2)
 
     def get_action(self, state):
-        action_probs = self.b[state]
+        action_probs = self.b[state]  # 행동 정책에서 가져옴
         actions = list(action_probs.keys())
         probs = list(action_probs.values())
         return np.random.choice(actions, p=probs)
@@ -42,11 +42,13 @@ class SarsaOffPolicyAgent:
             rho = 1
         else:
             next_q = self.Q[next_state, next_action]
-            rho = self.pi[next_state][next_action] / self.b[next_state][next_action]
+            rho = self.pi[next_state][next_action] / self.b[next_state][next_action]  # 가중치 rho 계산
 
+        # rho로 TD 목표 보정
         target = rho * (reward + self.gamma * next_q)
         self.Q[state, action] += (target - self.Q[state, action]) * self.alpha
 
+        # 각각의 정책 개선
         self.pi[state] = greedy_probs(self.Q, state, 0)
         self.b[state] = greedy_probs(self.Q, state, self.epsilon)
 
@@ -70,4 +72,5 @@ for episode in range(episodes):
             break
         state = next_state
 
+# [그림 6-9] 오프-정책 SARSA로 얻은 결과
 env.render_q(agent.Q)
