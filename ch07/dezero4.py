@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from dezero import Model
-from dezero import optimizers
+from dezero import optimizers  # 옵티마이저들이 들어 있는 패키지 임포트
 import dezero.layers as L
 import dezero.functions as F
 
-# Dataset
+# 데이터셋 생성
 np.random.seed(0)
 x = np.random.rand(100, 1)
 y = np.sin(2 * np.pi * x) + np.random.rand(100, 1)
@@ -25,8 +25,8 @@ class TwoLayerNet(Model):
         return y
 
 model = TwoLayerNet(10, 1)
-optimizer = optimizers.SGD(lr)
-optimizer.setup(model)
+optimizer = optimizers.SGD(lr)  # 옵티마이저 생성
+optimizer.setup(model)          # 최적화할 모델을 옵티마이저에 등록
 
 for i in range(iters):
     y_pred = model(x)
@@ -35,11 +35,11 @@ for i in range(iters):
     model.cleargrads()
     loss.backward()
 
-    optimizer.update()
+    optimizer.update()  # 옵티마이저로 매개변수 갱신
     if i % 1000 == 0:
         print(loss.data)
 
-# Plot
+# 그래프로 시각화([그림 7-12]와 같음)
 plt.scatter(x, y, s=10)
 plt.xlabel('x')
 plt.ylabel('y')
