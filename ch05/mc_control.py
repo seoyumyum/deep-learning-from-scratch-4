@@ -72,5 +72,5 @@ for episode in range(episodes):
 
         state = next_state
 
-# [그림 5-17] Q 함수 시각화
+# [그림 5-17] 및 [그림 5-18]
 env.render_q(agent.Q)
