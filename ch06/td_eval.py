@@ -21,7 +21,7 @@ class TdAgent:
         return np.random.choice(actions, p=probs)
 
     def eval(self, state, reward, next_state, done):
-        next_V = 0 if done else self.V[next_state]
+        next_V = 0 if done else self.V[next_state]  # 목표 지점의 가치 함수는 0
         target = reward + self.gamma * next_V
         self.V[state] += (target - self.V[state]) * self.alpha
 
@@ -37,9 +37,10 @@ for episode in range(episodes):
         action = agent.get_action(state)
         next_state, reward, done = env.step(action)
 
-        agent.eval(state, reward, next_state, done)
+        agent.eval(state, reward, next_state, done)  # 매번 호출
         if done:
             break
         state = next_state
 
+# [그림 6-5] TD법으로 얻은 가치 함수
 env.render_v(agent.V)
