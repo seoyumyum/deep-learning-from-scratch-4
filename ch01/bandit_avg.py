@@ -25,7 +25,7 @@ for run in range(runs):  # 200번 실험
 
 avg_rates = np.average(all_rates, axis=0)  # 각 단계의 평균 저장
 
-# 그래프 그리기
+# [그림 1-16] 단계별 승률(200번 실험 후 평균)
 plt.ylabel('Rates')
 plt.xlabel('Steps')
 plt.plot(avg_rates)
