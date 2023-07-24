@@ -5,7 +5,7 @@ pi = np.array([0.1, 0.1, 0.8])  # 확률 분포
 
 # =========== 기댓값 ==================
 e = np.sum(x * pi)
-print('E_pi[x]', e)
+print('참값(E_pi[x]):', e)
 
 # =========== 몬테카를로법 ==================
 n = 100  # 샘플 개수
@@ -14,7 +14,9 @@ for _ in range(n):
     s = np.random.choice(x, p=pi)  # pi를 이용한 샘플링
     samples.append(s)
 
-print('MC: {:.2f} (var: {:.2f})'.format(np.mean(samples), np.var(samples)))
+mean = np.mean(samples)  # 샘플들의 평균
+var = np.var(samples)    # 샘플들의 분산
+print('몬테카를로법: {:.2f} (분산: {:.2f})'.format(np.mean(samples), np.var(samples)))
 
 # =========== 중요도 샘플링 ===========
 b = np.array([0.2, 0.2, 0.6])  #b = np.array([1/3, 1/3, 1/3])
@@ -26,4 +28,6 @@ for _ in range(n):
     rho = pi[i] / b[i]              # 가중치
     samples.append(rho * s)         # 샘플 데이터에 가중치를 곱해 저장
     
-print('IS: {:.2f} (var: {:.2f})'.format(np.mean(samples), np.var(samples)))
+mean = np.mean(samples)
+var = np.var(samples)
+print('중요도 샘플링: {:.2f} (분산: {:.2f})'.format(np.mean(samples), np.var(samples)))
