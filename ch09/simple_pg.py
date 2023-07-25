@@ -70,7 +70,7 @@ for episode in range(episodes):
 
     while not done:
         action, prob = agent.get_action(state)  # 행동 선택
-        next_state, reward, terminated, terminated, info = env.step(action)  # 행동 수행
+        next_state, reward, terminated, truncated, info = env.step(action)  # 행동 수행
         done = terminated | truncated
 
         agent.add(reward, prob)  # 보상과 행동의 확률을 에이전트에 추가
