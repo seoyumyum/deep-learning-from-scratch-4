@@ -59,18 +59,19 @@ class Agent:
 
 
 episodes = 3000
-env = gym.make('CartPole-v0')
+env = gym.make('CartPole-v0', render_mode='rgb_array')
 agent = Agent()
 reward_history = []
 
 for episode in range(episodes):
-    state = env.reset()
+    state = env.reset()[0]
     done = False
     total_reward = 0
 
     while not done:
         action, prob = agent.get_action(state)  # 행동 선택
-        next_state, reward, done, info = env.step(action)  # 행동 수행
+        next_state, reward, terminated, terminated, info = env.step(action)  # 행동 수행
+        done = terminated | truncated
 
         agent.add(reward, prob)  # 보상과 행동의 확률을 에이전트에 추가
         state = next_state       # 상태 전이
