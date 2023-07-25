@@ -48,8 +48,8 @@ class Agent:
 
         G, loss = 0, 0
         for reward, prob in reversed(self.memory):
-            G = reward + self.gamma * G
-            loss += -F.log(prob) * G
+            G = reward + self.gamma * G  # 수익 G 계산
+            loss += -F.log(prob) * G     # 손실 함수 계산
 
         loss.backward()
         self.optimizer.update()
@@ -81,6 +81,6 @@ for episode in range(episodes):
         print("episode :{}, total reward : {:.1f}".format(episode, sum_reward))
 
 
-# plot
+# [그림 9-4]의 왼쪽 그래프
 from common.utils import plot_total_reward
 plot_total_reward(reward_history)
