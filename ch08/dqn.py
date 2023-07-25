@@ -97,18 +97,19 @@ class DQNAgent:  # 에이전트 클래스
 
 episodes = 300      # 에피소드 수
 sync_interval = 20  # 신경망 동기화 주기(20번째 에피소드마다 동기화)
-env = gym.make('CartPole-v0')
+env = gym.make('CartPole-v0', render_mode='rgb_array')
 agent = DQNAgent()
 reward_history = [] # 에피소드별 보상 기록
 
 for episode in range(episodes):
-    state = env.reset()
+    state = env.reset()[0]
     done = False
     total_reward = 0
 
     while not done:
         action = agent.get_action(state)
-        next_state, reward, done, info = env.step(action)
+        next_state, reward, terminated, truncated, info = env.step(action)
+        done = terminated | truncated
 
         agent.update(state, action, reward, next_state, done)
         state = next_state
@@ -131,13 +132,14 @@ plt.show()
 
 # 학습이 끝난 에이전트에 탐욕 행동을 선택하도록 하여 플레이
 agent.epsilon = 0  # 탐욕 정책(무작위로 행동할 확률 ε을 0로 설정)
-state = env.reset()
+state = env.reset()[0]
 done = False
 total_reward = 0
 
 while not done:
     action = agent.get_action(state)
-    next_state, reward, done, info = env.step(action)
+    next_state, reward, terminated, truncated, info = env.step(action)
+    done = terminated | truncated
     state = next_state
     total_reward += reward
     env.render()
