@@ -84,6 +84,6 @@ for episode in range(episodes):
         print("episode :{}, total reward : {:.1f}".format(episode, total_reward))
 
 
-# plot
+# [그림 9-2] 에피소드별 보상 합계 추이
 from common.utils import plot_total_reward
 plot_total_reward(reward_history)
