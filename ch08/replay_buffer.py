@@ -27,7 +27,7 @@ class ReplayBuffer:
         return state, action, reward, next_state, done
 
 
-env = gym.make('CartPole-v0', render_mode='human)
+env = gym.make('CartPole-v0', render_mode='human')
 replay_buffer = ReplayBuffer(buffer_size=10000, batch_size=32)
 
 for episode in range(10):  # 에피소드 10회 수행
