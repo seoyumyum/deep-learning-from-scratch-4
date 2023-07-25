@@ -33,7 +33,7 @@ class ReplayBuffer:
         return state, action, reward, next_state, done
 
 
-class QNet(Model):
+class QNet(Model):  # 신경망 클래스
     def __init__(self, action_size):
         super().__init__()
         self.l1 = L.Linear(128)
@@ -47,34 +47,36 @@ class QNet(Model):
         return x
 
 
-class DQNAgent:
+class DQNAgent:  # 에이전트 클래스
     def __init__(self):
         self.gamma = 0.98
         self.lr = 0.0005
         self.epsilon = 0.1
-        self.buffer_size = 10000
-        self.batch_size = 32
+        self.buffer_size = 10000  # 경험 재생 버퍼 크기
+        self.batch_size = 32      # 미니배치 크기
         self.action_size = 2
 
         self.replay_buffer = ReplayBuffer(self.buffer_size, self.batch_size)
-        self.qnet = QNet(self.action_size)
-        self.qnet_target = QNet(self.action_size)
+        self.qnet = QNet(self.action_size)         # 원본 신경망
+        self.qnet_target = QNet(self.action_size)  # 목표 신경망
         self.optimizer = optimizers.Adam(self.lr)
-        self.optimizer.setup(self.qnet)
+        self.optimizer.setup(self.qnet)            # 옵티마이저에 qnet 등록
 
     def get_action(self, state):
         if np.random.rand() < self.epsilon:
             return np.random.choice(self.action_size)
         else:
-            state = state[np.newaxis, :]
+            state = state[np.newaxis, :]  # 배치 처리용 차원 추가
             qs = self.qnet(state)
             return qs.data.argmax()
 
     def update(self, state, action, reward, next_state, done):
+        # 경험 재생 버퍼에 경험 데이터 추가
         self.replay_buffer.add(state, action, reward, next_state, done)
         if len(self.replay_buffer) < self.batch_size:
-            return
+            return  # 데이터가 미니배치 크기만큼 쌓이지 않았다면 여기서 끝
 
+        # 미니배치 크기 이상이 쌓이면 미니배치 생성
         state, action, reward, next_state, done = self.replay_buffer.get_batch()
         qs = self.qnet(state)
         q = qs[np.arange(self.batch_size), action]
@@ -90,14 +92,14 @@ class DQNAgent:
         loss.backward()
         self.optimizer.update()
 
-    def sync_qnet(self):
+    def sync_qnet(self):  # 두 신경망 동기화
         self.qnet_target = copy.deepcopy(self.qnet)
 
-episodes = 300
-sync_interval = 20
+episodes = 300      # 에피소드 수
+sync_interval = 20  # 신경망 동기화 주기(20번째 에피소드마다 동기화)
 env = gym.make('CartPole-v0')
 agent = DQNAgent()
-reward_history = []
+reward_history = [] # 에피소드별 보상 기록
 
 for episode in range(episodes):
     state = env.reset()
@@ -120,15 +122,15 @@ for episode in range(episodes):
         print("episode :{}, total reward : {}".format(episode, total_reward))
 
 
-# === Plot ===
+# [그림 8-8] 「카트 폴」에서 에피소드별 보상 총합의 추이
 plt.xlabel('Episode')
 plt.ylabel('Total Reward')
 plt.plot(range(len(reward_history)), reward_history)
 plt.show()
 
 
-# === Play CartPole ===
-agent.epsilon = 0  # greedy policy
+# 학습이 끝난 에이전트에 탐욕 행동을 선택하도록 하여 플레이
+agent.epsilon = 0  # 탐욕 정책(무작위로 행동할 확률 ε을 0로 설정)
 state = env.reset()
 done = False
 total_reward = 0
