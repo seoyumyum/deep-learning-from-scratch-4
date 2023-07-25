@@ -68,7 +68,7 @@ for episode in range(episodes):
 
     while not done:
         action, prob = agent.get_action(state)
-        next_state, reward, terminated, terminated, info = env.step(action)
+        next_state, reward, terminated, truncated, info = env.step(action)
         done = terminated | truncated
 
         agent.add(reward, prob)
