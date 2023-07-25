@@ -79,18 +79,19 @@ class Agent:
 
 
 episodes = 3000
-env = gym.make('CartPole-v0')
+env = gym.make('CartPole-v0', render_mode='rgb_array')
 agent = Agent()
 reward_history = []
 
 for episode in range(episodes):
-    state = env.reset()
+    state = env.reset()[0]
     done = False
     total_reward = 0
 
     while not done:
         action, prob = agent.get_action(state)
-        next_state, reward, done, info = env.step(action)
+        next_state, reward, terminated, truncated, info = env.step(action)
+        done = terminated | truncated
 
         agent.update(state, prob, reward, next_state, done)
 
