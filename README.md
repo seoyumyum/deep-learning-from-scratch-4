@@ -22,9 +22,9 @@
 
 ‘시리즈’입니다만, 이전 편을 읽지 않아도 상관없도록 꾸려졌습니다. 예를 들어3 편에서 만드는 프레임워크는 작동 원리뿐 아니라 API 형태까지 파이토치와 거의 같습니다. 그래서 3편을 읽지 않았어도 4편을 읽는 데 전혀 무리가 없습니다. 실제로 4편의 예제 소스용 깃허브 저장소에서는 파이토치 버전 코드도 제공합니다.
 
-* [『밑바닥부터 시작하는 딥러닝』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch)
-* [『밑바닥부터 시작하는 딥러닝 ❷』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-2)
-* [『밑바닥부터 시작하는 딥러닝 ❸』 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-3)
+* [❶편의 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch)
+* [❷편의 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-2)
+* [❸편의 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-3)
 
 ## 책 미리보기
 [hanbit.co.kr](https://preview2.hanbit.co.kr/books/yyxd/#p=1)
