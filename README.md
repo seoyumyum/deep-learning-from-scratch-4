@@ -4,7 +4,7 @@
 
 ## 새소식
 
-:white_check_mark: **2024.01.26** - 출간 (<a href="http://www.yes24.com/Product/Goods/124640233">예스24</a> | 교보문고 | <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=332558447">알라딘</a> | <a href="http://hanbit.co.kr/store/books/look.php?p_code=B6031814045">한빛미디어</a>)
+:white_check_mark: **2024.01.26** - 출간 (<a href="https://product.kyobobook.co.kr/detail/S000212020531">교보문고</a> | <a href="http://www.yes24.com/Product/Goods/124640233">예스24</a> | <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=332558447">알라딘</a> | <a href="http://hanbit.co.kr/store/books/look.php?p_code=B6031814045">한빛미디어</a>)
 
 ---
 
