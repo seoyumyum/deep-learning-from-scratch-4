@@ -2,9 +2,9 @@
 
 <a href="http://www.yes24.com/Product/Goods/72173703"><img src="https://github.com/WegraLee/deep-learning-from-scratch-4/blob/master/cover.jpeg" width="150" align=right></a>
 
-## 새소식
+판매처: <a href="https://product.kyobobook.co.kr/detail/S000212020531">교보문고</a>, <a href="http://www.yes24.com/Product/Goods/124640233">예스24</a>, <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=332558447">알라딘</a>, <a href="http://hanbit.co.kr/store/books/look.php?p_code=B6031814045">한빛미디어</a> 등
 
-:white_check_mark: **2024.01.26** - 출간 (<a href="https://product.kyobobook.co.kr/detail/S000212020531">교보문고</a> | <a href="http://www.yes24.com/Product/Goods/124640233">예스24</a> | <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=332558447">알라딘</a> | <a href="http://hanbit.co.kr/store/books/look.php?p_code=B6031814045">한빛미디어</a>)
+미리보기: [hanbit.co.kr](https://preview2.hanbit.co.kr/books/yyxd/#p=1)
 
 ---
 
@@ -25,9 +25,6 @@
 * [❶편의 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch)
 * [❷편의 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-2)
 * [❸편의 깃허브 저장소](https://github.com/WegraLee/deep-learning-from-scratch-3)
-
-## 책 미리보기
-[hanbit.co.kr](https://preview2.hanbit.co.kr/books/yyxd/#p=1)
 
 ## 파일 구성
 
