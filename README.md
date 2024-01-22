@@ -4,7 +4,7 @@
 
 판매처: <a href="https://product.kyobobook.co.kr/detail/S000212020531">교보문고</a>, <a href="http://www.yes24.com/Product/Goods/124640233">예스24</a>, <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=332558447">알라딘</a>, <a href="http://hanbit.co.kr/store/books/look.php?p_code=B6031814045">한빛미디어</a> 등
 
-미리보기: [hanbit.co.kr](https://preview2.hanbit.co.kr/books/yyxd/#p=1)
+[미리보기](https://preview2.hanbit.co.kr/books/yyxd/#p=1)
 
 ---
 
