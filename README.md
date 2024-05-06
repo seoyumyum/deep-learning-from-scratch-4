@@ -4,7 +4,7 @@
 
 판매처: <a href="https://product.kyobobook.co.kr/detail/S000212020531">교보문고</a>, <a href="http://www.yes24.com/Product/Goods/124640233">예스24</a>, <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=332558447">알라딘</a>, <a href="http://hanbit.co.kr/store/books/look.php?p_code=B6031814045">한빛미디어</a> 등
 
-[미리보기](https://preview2.hanbit.co.kr/books/yyxd/#p=1)
+[미리보기](https://preview2.hanbit.co.kr/books/yyxd/#p=1) | [정오표](https://docs.google.com/document/d/1fsPVXyPF0gpmN57VV6k0uxMfWXUbiQCwno8vCTYpMc8/edit)
 
 ---
 
@@ -83,10 +83,3 @@ $ python actor_critic.py
 
 이 저장소의 소스 코드는 [MIT 라이선스](http://www.opensource.org/licenses/MIT)를 따릅니다.
 상업적 목적으로도 자유롭게 이용하실 수 있습니다.
-
-
-## 책의 오류
-
-이 책의 오탈자 등 오류 정보는 아래 페이지에서 확인하실 수 있습니다.
-
-[정오표](https://docs.google.com/document/d/1fsPVXyPF0gpmN57VV6k0uxMfWXUbiQCwno8vCTYpMc8/edit)
